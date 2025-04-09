@@ -1,6 +1,6 @@
 using System;
 using System.Data.SQLite;
-// Class User program
+// Class User
 namespace Project_1
 {
     class User : IComparable
@@ -23,7 +23,7 @@ namespace Project_1
 
         public override string ToString() => $"ID: {Id}, Username: {Username}, Password: {Password}";
 
-        int IComparable.CompareTo(object? obj)
+        int IComparable.CompareTo(object? obj) // This method is for sorting (Program.cs Line 96).
         {
             User? user = obj as User;
             if (!(user is null))

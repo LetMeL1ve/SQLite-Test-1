@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Data.SQLite;
 
+// You must install System.Data.SQLite to use this code.
 namespace Project_1
 {
     class Program
     {
+        // Change the path of data base to your path
         private readonly static string connectionString = @"Data Source=D:\Progs\DatabaseForVojta\database.db; Version=3;";
         private static List<User> Users = new List<User>();
         static void Main(string[] args)
@@ -62,7 +64,7 @@ namespace Project_1
             }
         }
         #region Methods
-        private static void OnStart()
+        private static void OnStart() // This Method run only when program starts.
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -72,7 +74,7 @@ namespace Project_1
                 command.ExecuteNonQuery();
             }
         }
-        private static void GetFromDB()
+        private static void GetFromDB() // This method rewrites Users List using Database.
         {
             Users.Clear();
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
@@ -93,7 +95,7 @@ namespace Project_1
             }
             Users.Sort();
         }
-        private static void AddToDB(User user)
+        private static void AddToDB(User user) // This method is for adding new User to Database.
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
@@ -104,7 +106,7 @@ namespace Project_1
             }
             GetFromDB();
         }
-        private static void DeleteFromDB(int id)
+        private static void DeleteFromDB(int id) // This methon is for deleting User from Database.
         {
             using (SQLiteConnection connection = new SQLiteConnection(connectionString))
             {
